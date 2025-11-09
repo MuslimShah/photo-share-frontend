@@ -1,6 +1,6 @@
 /* global localStorage, window, document */
 
-const DEFAULT_API_BASE = 'photo-share-backend-kappa.vercel.app/api';
+const DEFAULT_API_BASE = 'https://photo-share-backend-kappa.vercel.app/api';
 const DEFAULT_AVATAR = 'https://placehold.co/40x40?text=%2B';
 
 function normalizeBase(url) {
