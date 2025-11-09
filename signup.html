@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhotoShare | Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="signup">
+    <main class="auth-container">
+      <section class="auth-card">
+        <h1>Create Your Account</h1>
+        <p class="muted">Join the PhotoShare community.</p>
+        <form id="signup-form" class="form">
+          <label for="signup-name">Name</label>
+          <input id="signup-name" type="text" required autocomplete="name" />
+
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" required autocomplete="email" />
+
+          <label for="signup-password">Password</label>
+          <input
+            id="signup-password"
+            type="password"
+            required
+            minlength="6"
+            autocomplete="new-password"
+          />
+
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+        <p class="muted">
+          Already have an account?
+          <a href="login.html" class="link">Log in instead</a>
+        </p>
+        <p id="signup-error" class="error-message hidden"></p>
+      </section>
+    </main>
+  </body>
+</html>
+

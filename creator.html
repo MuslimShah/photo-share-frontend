@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhotoShare | Creator Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="creator-dashboard">
+    <header class="topbar">
+      <div class="logo">PhotoShare</div>
+      <div class="search-wrapper">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search posts..."
+          aria-label="Search photos"
+        />
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Explore</a>
+        <a href="profile.html" class="nav-link" data-visible="auth">Profile</a>
+        <a href="login.html" class="nav-link" id="login-link" data-visible="guest">Login</a>
+        <a href="signup.html" class="nav-link" id="signup-link" data-visible="guest">Sign Up</a>
+        <button id="logout-btn" class="btn btn-ghost" data-visible="auth">Logout</button>
+      </nav>
+    </header>
+    <main class="content creator-page">
+      <section class="card upload-card">
+        <div class="section-header">
+          <div>
+            <h1>Creator Studio</h1>
+            <p class="muted small">Welcome back, <span id="creator-name">Creator</span></p>
+          </div>
+        </div>
+        <form id="upload-form" class="form" enctype="multipart/form-data">
+          <label for="upload-photo">Photo</label>
+          <input id="upload-photo" type="file" accept="image/*" required />
+
+          <label for="upload-title">Title</label>
+          <input id="upload-title" type="text" required />
+
+          <label for="upload-caption">Caption</label>
+          <textarea id="upload-caption" rows="3" required></textarea>
+
+          <label for="upload-location">Location</label>
+          <div class="autocomplete">
+            <input id="upload-location" type="text" autocomplete="off" placeholder="Search for a place..." />
+            <div class="suggestions hidden" id="upload-location-suggestions"></div>
+          </div>
+
+          <label for="upload-people">People</label>
+          <div class="autocomplete">
+            <input id="upload-people" type="text" autocomplete="off" placeholder="Search people..." />
+            <div class="suggestions hidden" id="upload-people-suggestions"></div>
+          </div>
+          <div id="upload-selected-people" class="people-list"></div>
+
+          <button type="submit" class="btn btn-primary">Publish Photo</button>
+        </form>
+        <p id="upload-feedback" class="muted"></p>
+      </section>
+      <section class="card uploads-list">
+        <div class="section-header">
+          <h2>Your Uploads</h2>
+          <span id="upload-count" class="badge">0</span>
+        </div>
+        <div id="creator-gallery" class="photo-grid compact">
+          <p class="empty-state">No uploads yet. Share your first photo!</p>
+        </div>
+      </section>
+      <section class="card dashboard-feed">
+        <div class="section-header">
+          <h2>Community Feed</h2>
+          <button id="dashboard-refresh" class="btn btn-ghost" type="button">Refresh</button>
+        </div>
+        <div id="dashboard-photo-grid" class="photo-grid">
+          <p class="empty-state">Loading feed...</p>
+        </div>
+      </section>
+      <button
+        class="fab hidden"
+        data-role="creator"
+        data-action="open-create-modal"
+        aria-label="Create new post"
+      >
+        +
+      </button>
+      <div id="create-post-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="modal-close" id="create-post-close" aria-label="Close create post form">
+            ×
+          </button>
+          <h2>Share a New Moment</h2>
+          <form id="create-post-form" class="form">
+            <label for="create-photo">Photo</label>
+            <input id="create-photo" type="file" accept="image/*" required />
+
+            <label for="create-title">Title</label>
+            <input id="create-title" type="text" required />
+
+            <label for="create-caption">Caption</label>
+            <textarea id="create-caption" rows="3" required></textarea>
+
+            <label for="create-location">Location</label>
+            <div class="autocomplete">
+              <input id="create-location" type="text" autocomplete="off" placeholder="Search for a place..." />
+              <div class="suggestions hidden" id="location-suggestions"></div>
+            </div>
+
+            <label for="create-people">People</label>
+            <div class="autocomplete">
+              <input id="create-people" type="text" autocomplete="off" placeholder="Search people..." />
+              <div class="suggestions hidden" id="people-suggestions"></div>
+            </div>
+            <div id="selected-people" class="people-list"></div>
+
+            <div class="modal-actions">
+              <button type="button" class="btn btn-ghost" id="create-post-cancel">Cancel</button>
+              <button type="submit" class="btn btn-primary">Publish</button>
+            </div>
+            <p id="create-post-feedback" class="muted small"></p>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+

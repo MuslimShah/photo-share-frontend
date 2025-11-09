@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhotoShare | Photo Detail</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="photo-detail">
+    <header class="topbar">
+      <div class="logo">PhotoShare</div>
+      <div class="search-wrapper">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search posts..."
+          aria-label="Search photos"
+        />
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Explore</a>
+        <a href="profile.html" class="nav-link" data-visible="auth">Profile</a>
+        <a href="login.html" class="nav-link" id="login-link" data-visible="guest">Login</a>
+        <a href="signup.html" class="nav-link" id="signup-link" data-visible="guest">Sign Up</a>
+        <button id="logout-btn" class="btn btn-ghost" data-visible="auth">Logout</button>
+      </nav>
+    </header>
+    <main class="content photo-detail">
+      <section class="photo-viewer">
+        <img id="photo-image" alt="Selected photo" class="photo-display" />
+      </section>
+      <aside class="photo-meta">
+        <div class="meta-header">
+          <h1 id="photo-title">Loading...</h1>
+          <button id="like-btn" class="btn btn-like">
+            <span class="icon">❤</span>
+            <span id="like-count">0</span>
+          </button>
+        </div>
+        <div class="meta-info">
+          <p id="photo-caption"></p>
+          <p id="photo-location" class="muted"></p>
+          <p id="photo-creator" class="muted"></p>
+          <div id="photo-people" class="tag-list"></div>
+        </div>
+        <section class="comments-section">
+          <h2>Comments</h2>
+          <div id="comment-list" class="comment-list">
+            <p class="empty-state">No comments yet.</p>
+          </div>
+          <form id="comment-form" class="comment-form">
+            <textarea
+              id="comment-input"
+              rows="3"
+              placeholder="Add a comment..."
+              aria-label="Add a comment"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-primary">Post Comment</button>
+          </form>
+          <p id="comment-login-callout" class="muted hidden">
+            Login to like or comment on this photo.
+          </p>
+        </section>
+      </aside>
+    </main>
+    <button
+      class="fab hidden"
+      data-role="creator"
+      data-action="open-create-modal"
+      aria-label="Create new post"
+    >
+      +
+    </button>
+    <div id="create-post-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="modal-close" id="create-post-close" aria-label="Close create post form">
+          ×
+        </button>
+        <h2>Share a New Moment</h2>
+        <form id="create-post-form" class="form">
+          <label for="create-photo">Photo</label>
+          <input id="create-photo" type="file" accept="image/*" required />
+
+          <label for="create-title">Title</label>
+          <input id="create-title" type="text" required />
+
+          <label for="create-caption">Caption</label>
+          <textarea id="create-caption" rows="3" required></textarea>
+
+          <label for="create-location">Location</label>
+          <div class="autocomplete">
+            <input id="create-location" type="text" autocomplete="off" placeholder="Search for a place..." />
+            <div class="suggestions hidden" id="location-suggestions"></div>
+          </div>
+
+          <label for="create-people">People</label>
+          <div class="autocomplete">
+            <input id="create-people" type="text" autocomplete="off" placeholder="Search people..." />
+            <div class="suggestions hidden" id="people-suggestions"></div>
+          </div>
+          <div id="selected-people" class="people-list"></div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-ghost" id="create-post-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Publish</button>
+          </div>
+          <p id="create-post-feedback" class="muted small"></p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+

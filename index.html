@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhotoShare | Feed</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="feed">
+    <header class="topbar">
+      <div class="logo">PhotoShare</div>
+      <div class="search-wrapper">
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search by title or location..."
+          aria-label="Search photos"
+        />
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link active">Explore</a>
+        <a href="profile.html" class="nav-link" data-visible="auth">Profile</a>
+        <a href="login.html" class="nav-link" id="login-link" data-visible="guest">Login</a>
+        <a href="signup.html" class="nav-link" id="signup-link" data-visible="guest">Sign Up</a>
+        <button id="logout-btn" class="btn btn-ghost" data-visible="auth">Logout</button>
+      </nav>
+    </header>
+    <main class="content">
+      <section class="feed">
+        <button
+          class="fab hidden"
+          data-role="creator"
+          data-action="open-create-modal"
+          aria-label="Create new post"
+        >
+          +
+        </button>
+        <div id="create-post-modal" class="modal hidden">
+          <div class="modal-content">
+            <button class="modal-close" id="create-post-close" aria-label="Close create post form">
+              ×
+            </button>
+            <h2>Share a New Moment</h2>
+            <form id="create-post-form" class="form">
+              <label for="create-photo">Photo</label>
+              <input id="create-photo" type="file" accept="image/*" required />
+
+              <label for="create-title">Title</label>
+              <input id="create-title" type="text" required />
+
+              <label for="create-caption">Caption</label>
+              <textarea id="create-caption" rows="3" required></textarea>
+
+              <label for="create-location">Location</label>
+              <div class="autocomplete">
+                <input id="create-location" type="text" autocomplete="off" placeholder="Search for a place..." />
+                <div class="suggestions hidden" id="location-suggestions"></div>
+              </div>
+
+              <label for="create-people">People</label>
+              <div class="autocomplete">
+                <input id="create-people" type="text" autocomplete="off" placeholder="Search people..." />
+                <div class="suggestions hidden" id="people-suggestions"></div>
+              </div>
+              <div id="selected-people" class="people-list"></div>
+
+              <div class="modal-actions">
+                <button type="button" class="btn btn-ghost" id="create-post-cancel">Cancel</button>
+                <button type="submit" class="btn btn-primary">Publish</button>
+              </div>
+              <p id="create-post-feedback" class="muted small"></p>
+            </form>
+          </div>
+        </div>
+        <div id="photo-grid" class="photo-grid">
+          <p class="empty-state">Loading photos...</p>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>&copy; <span id="year"></span> PhotoShare. Built for professionals.</p>
+    </footer>
+  </body>
+</html>
+
