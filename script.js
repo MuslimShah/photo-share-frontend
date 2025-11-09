@@ -39,7 +39,7 @@ function resolveApiBase() {
     return DEFAULT_API_BASE;
   }
 
-  return normalizeBase(`${window.location.origin}/api`);
+  return DEFAULT_API_BASE;
 }
 
 const API_BASE = resolveApiBase();
